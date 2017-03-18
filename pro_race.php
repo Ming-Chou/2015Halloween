@@ -6,6 +6,31 @@
 	<body style="background-image:url('back.jpg'); background-size:cover;">
 		<div align="center"  style="background-color:#ffffff;margin-top:50px;margin-right:150px;margin-left:150px;margin-bottom:50px;">
 		<?php
+			date_default_timezone_set("Asia/Taipei");
+			$Y = date("Y");
+			$m = date("m");
+			$d = date("d");
+			$start_time = mktime(0,0,0,10,8,2015);
+			$end_time = mktime(0,0,0,12,11,2015);
+			$now_time = mktime(0,0,0,date("m"),date("d"),date("Y"));
+			if($now_time<$start_time)
+			{
+				echo "<script type='text/javascript'>";
+				echo "alert('投票時間還沒開始哦！');";
+				echo "history.back();";
+				echo "</script>";
+				exit();					
+			}
+			if($now_time>$end_time)
+			{
+				echo "<script type='text/javascript'>";
+				echo "alert('投搞時間已經結束了哦！');";
+				echo "history.back();";
+				echo "</script>";
+				exit();
+			}
+		?>
+		<?php
 		function check_nick($id) { 
 
      			$flag = false; 
